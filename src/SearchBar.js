@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 
-function SearchBar() {
+function SearchBar({ books, onSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
-    // Implement search functionality here
-    console.log(`Searching for books with query: ${searchQuery}`);
+    // Filtered books based on the search query
+    const filteredBooks = books.filter((book) =>
+      book.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    onSearch(filteredBooks);
   };
 
   return (
